@@ -1,0 +1,38 @@
+##Parameter based on time
+def Z(t):
+    from math import *
+    
+    if t < 8 or t >= 22:
+        return Inapplicable
+    elif t >= 21:
+        return 7100 * (x - 14.4) ** (-1.32) - 287
+    elif t >= 18:
+        return -90 * (x - 18) ** 1.1 + 600
+    elif t >= 15.5:
+        return 290 * (x - 14.2) ** (-0.6) + 470
+    elif t >= 14.5:
+        return 35 * (x + 1) + 140
+    elif t >= 13:
+        return -83 * (x - 9) + 1135
+    elif t >= 11.5:
+        return 100 * (x - 12) ** 2 + 703.6
+    elif t >= 9:
+        return -90 * (x - 9) ** 1.2 + 998.9
+    else:
+        return -1000 * sin(1.1 * x + 1.05)
+
+##Parameter based on gender
+def G(A, s):
+    if s == 'M':
+        s = -500
+    else:
+        s = 500
+    return s * (3500 / A)  
+
+##Final output
+def main(A, G, Z):
+    colour_temp = A + G + 1470
+    light_intensity = Z
+    
+    return colour_temp, light_intensity
+x = main(A(x), G(A, s), Z(t))
